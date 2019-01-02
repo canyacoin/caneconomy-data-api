@@ -1,13 +1,17 @@
 package main
 
 import (
+	"context"
 	"os"
 	"time"
 
+	"cloud.google.com/go/firestore"
+	firebase "firebase.google.com/go"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	logging "github.com/op/go-logging"
+	"google.golang.org/api/option"
 )
 
 var (
@@ -19,6 +23,7 @@ var (
 	ethNodeURL            string
 	canworkEscrowContract string
 	nodeConnection        *ethclient.Client
+	fireStore             *firestore.Client
 	// contractInstance      *CanWork
 )
 
@@ -31,6 +36,17 @@ func init() {
 
 	ethNodeURL = mustGetenv("ETH_NODE_URL")
 	canworkEscrowContract = mustGetenv("CANWORK_ESCROW_HASH")
+	firebaseKeyFile := mustGetenv("FIREBASE_KEY_PATH")
+
+	sa := option.WithCredentialsFile(firebaseKeyFile)
+	app, err := firebase.NewApp(context.Background(), nil, sa)
+	if err != nil {
+		logger.Fatalf("unable parse service account credentials: %v", err)
+	}
+	fireStore, err = app.Firestore(context.Background())
+	if err != nil {
+		logger.Fatalf("unable to establish firestore connection: %v", err)
+	}
 
 	router = gin.Default()
 	router.Use(gin.Logger())
