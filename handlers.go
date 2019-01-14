@@ -6,6 +6,7 @@ import (
 
 	humanize "github.com/dustin/go-humanize"
 	"github.com/gin-gonic/gin"
+	"gitlab.com/canya-com/shared/data-structures/canwork"
 )
 
 func summaryHandler(c *gin.Context) {
@@ -23,10 +24,12 @@ func summaryHandler(c *gin.Context) {
 		if err != nil {
 			break
 		}
-		user := d.Data()
-		if user["type"] == "User" {
+		var user canwork.UserDocument
+		ui.DataTo(&user)
+
+		if user.Type == "User" {
 			userCount++
-		} else if user["type"] == "Provider" && user["whitelisted"] == true {
+		} else if user.Type == "Provider" && user.WhiteListed == true {
 			userCount++
 		}
 	}
