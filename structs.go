@@ -1,14 +1,15 @@
 package main
 
+import "math/big"
+
 // SummaryResponse in the data structure returned in JSON format from the summaryHandler (/summary)
 type SummaryResponse struct {
-	TotalUsers            int64   `json:"totalUsers"`
-	TotalJobsCompleted    int64   `json:"totalJobsCompleted"`
-	TotalCanTransacted    int64   `json:"totalCanTransacted"`
-	TotalCanInEscrow      float64 `json:"totalCanInEscrow"`
-	TotalCanFees          float64 `json:"totalCanFees"`
-	FeeCanRate            int64   `json:"feeCanRate"`
-	EscrowContractAddress string  `json:"escrowContractAddress"`
+	TotalUsers            int64      `json:"totalUsers"`
+	TotalJobsCompleted    int64      `json:"totalJobsCompleted"`
+	TotalCanTransacted    int64      `json:"totalCanTransacted"`
+	TotalCanInEscrow      *big.Float `json:"totalCanInEscrow",float`
+	TotalCanFees          float64    `json:"totalCanFees"`
+	EscrowContractAddress string     `json:"escrowContractAddress"`
 }
 
 // User structure from firestore

@@ -22,6 +22,7 @@ var (
 	cacheUpdatedAt        time.Time
 	ethNodeURL            string
 	canworkEscrowContract string
+	canyaCoinContract     = "0x1d462414fe14cf489c7a21cac78509f4bf8cd7c0"
 	nodeConnection        *ethclient.Client
 	fireStore             *firestore.Client
 	// contractInstance      *CanWork

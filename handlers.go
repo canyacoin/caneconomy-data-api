@@ -2,9 +2,13 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 
 	humanize "github.com/dustin/go-humanize"
+	"github.com/ethereum/go-ethereum/accounts/abi/bind"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/gin-gonic/gin"
 	"gitlab.com/canya-com/shared/data-structures/canwork"
 )
@@ -15,6 +19,7 @@ func summaryHandler(c *gin.Context) {
 		jobCount           int64
 		totalCanTransacted int64
 		ctx                = context.Background()
+		err                error
 	)
 
 	// Count users:
@@ -25,11 +30,11 @@ func summaryHandler(c *gin.Context) {
 			break
 		}
 		var user canwork.UserDocument
-		ui.DataTo(&user)
+		d.DataTo(&user)
 
 		if user.Type == "User" {
 			userCount++
-		} else if user.Type == "Provider" && user.WhiteListed == true {
+		} else if user.Type == "Provider" && user.WhiteListed == "true" {
 			userCount++
 		}
 	}
@@ -47,31 +52,38 @@ func summaryHandler(c *gin.Context) {
 		if job.ID == "" {
 			continue
 		}
-
-		logger.Infof("job id: %s", job.ID)
 		jobCount++
-		// switch job.State {
-		// case "Awaiting Escrow":
-		// 	js.awaitingEscrowCount++
-		// case "Offer pending":
-		// 	js.offerPendingCount++
-		// case "Cancelled":
-		// 	js.cancelledCount++
-		// case "Pending completion":
-		// 	js.completionPendingCount++
-		// case "Complete":
-		// 	js.completedCount++
-		// case "Review added":
-		// 	js.completedCount++
-		// 	js.reviewedCount++
-		// default:
-		// 	js.otherCount++
-		// }
 
 		for _, al := range job.ActionLog {
 			totalCanTransacted = (totalCanTransacted + int64(al.AmountCan))
 		}
 	}
+
+	nodeConnection, err = ethclient.Dial(ethNodeURL)
+	if err != nil {
+		logger.Fatalf("error connecting to node at: %s error was: %s", ethNodeURL, err.Error())
+	}
+
+	canyaCoinContractInstance, err := NewCanYaCoin(common.HexToAddress(canyaCoinContract), nodeConnection)
+	if err != nil {
+		m := fmt.Sprintf("error loading contract: %s error was: %s", canyaCoinContract, err.Error())
+		logger.Errorf(m)
+		c.JSON(http.StatusInternalServerError, gin.H{"message": m})
+		return
+	}
+
+	address := common.HexToAddress(canworkEscrowContract)
+	logger.Debugf("checking hash: %s", canworkEscrowContract)
+
+	balance, err := canyaCoinContractInstance.BalanceOf(&bind.CallOpts{}, address)
+	if err != nil {
+		m := fmt.Sprintf("unable to get balance of contract: %s error was: %s", canyaCoinContract, err.Error())
+		logger.Errorf(m)
+		c.JSON(http.StatusInternalServerError, gin.H{"message": m})
+		return
+	}
+
+	bal := canAmountToFloat(balance)
 
 	sr := SummaryResponse{
 		TotalUsers:            userCount,
@@ -79,6 +91,7 @@ func summaryHandler(c *gin.Context) {
 		TotalCanTransacted:    totalCanTransacted,
 		TotalCanFees:          (0.01 * float64(totalCanTransacted)),
 		EscrowContractAddress: canworkEscrowContract,
+		TotalCanInEscrow:      bal,
 	}
 	c.JSON(http.StatusOK, sr)
 }

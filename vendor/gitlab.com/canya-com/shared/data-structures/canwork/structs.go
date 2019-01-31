@@ -83,4 +83,5 @@ type JobDocument struct {
 	} `json:"actionLog"`
 	CanInEscrow int    `json:"canInEscrow"`
 	State       string `json:"state"`
+	Slug        string `json:"slug"`
 }

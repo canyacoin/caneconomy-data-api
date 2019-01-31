@@ -2,7 +2,7 @@
 
 
 [[projects]]
-  digest = "1:b7893f5f6f625db5253b7610eb9ba7177f7ec6f9e44efea6c0b70544f2b946fe"
+  digest = "1:4d2b28f7ac461495b2c5b0e9bd3eb4a513c6ad4517c40084aef8c087ed27deac"
   name = "cloud.google.com/go"
   packages = [
     "compute/metadata",
@@ -18,11 +18,11 @@
     "storage",
   ]
   pruneopts = "UT"
-  revision = "0ebda48a7f143b1cce9eb37a8c1106ac762a3430"
-  version = "v0.34.0"
+  revision = "28a4bc8c44b3acbcc482cff0cdf7de29a4688b61"
+  version = "v0.35.1"
 
 [[projects]]
-  digest = "1:e6a5e7d692c135fffdd0cc34b7744ba45c9497e83e5d3db9972a3e33b82b48b1"
+  digest = "1:c2752e4e13e64ca945c644e36583da6638db81ccdd346185efa0c02640e62d07"
   name = "firebase.google.com/go"
   packages = [
     ".",
@@ -34,8 +34,8 @@
     "storage",
   ]
   pruneopts = "UT"
-  revision = "d66173809ba9d56b97a4e69df7f832c9a93cd323"
-  version = "v3.5.0"
+  revision = "f1dcecc6328cf3857fc970f450cca3965a90b422"
+  version = "v3.6.0"
 
 [[projects]]
   digest = "1:beccdefdf8a693d2420d1be448e93bf60abd308a492000d1f71faf5f72003c17"
@@ -77,7 +77,7 @@
   version = "v1.0.0"
 
 [[projects]]
-  digest = "1:81cdea2cb729a674dc6e3f9e85ca1169b6a13157676b5ff6e15f1561371a729d"
+  digest = "1:9ae47338839799021d1b263c4ff17bc1b731c17758752de5415dee6a55d7f6ed"
   name = "github.com/ethereum/go-ethereum"
   packages = [
     ".",
@@ -93,7 +93,6 @@
     "core/types",
     "crypto",
     "crypto/secp256k1",
-    "crypto/sha3",
     "ethclient",
     "ethdb",
     "event",
@@ -106,8 +105,8 @@
     "trie",
   ]
   pruneopts = "UT"
-  revision = "24d727b6d6e2c0cde222fa12155c4a6db5caaf2e"
-  version = "v1.8.20"
+  revision = "9dc5d1a915ac0e0bd8429d6ac41df50eec91de5f"
+  version = "v1.8.21"
 
 [[projects]]
   digest = "1:2b59aca2665ff804f6606c8829eaee133ddd3aefbc841014660d961b0034f888"
@@ -118,7 +117,6 @@
   version = "v1.2"
 
 [[projects]]
-  branch = "master"
   digest = "1:36fe9527deed01d2a317617e59304eb2c4ce9f8a24115bcc5c2e37b3aee5bae4"
   name = "github.com/gin-contrib/sse"
   packages = ["."]
@@ -147,7 +145,7 @@
   version = "v1.5.4"
 
 [[projects]]
-  digest = "1:08db8b1f7abeb6b74827c8dffebb6e52c8400adc194e0273724315c6fab8a762"
+  digest = "1:72856926f8208767b837bf51e3373f49139f61889b67dc7fd3c2a0fd711e3f7a"
   name = "github.com/golang/protobuf"
   packages = [
     "proto",
@@ -161,7 +159,8 @@
     "ptypes/wrappers",
   ]
   pruneopts = "UT"
-  revision = "5a0f697c9ed9d68fef0116532c6e05cfeae00e55"
+  revision = "aa810b61a9c79d51363740d207bb46cf8e620ed5"
+  version = "v1.2.0"
 
 [[projects]]
   branch = "master"
@@ -172,12 +171,9 @@
   revision = "2e65f85255dbc3072edf28d6b5b8efc472979f5a"
 
 [[projects]]
-  digest = "1:cd9864c6366515827a759931746738ede6079faa08df9c584596370d6add135c"
+  digest = "1:856bd1e35f6da8ce5671a5df09d0e89bf01e9b74b3dabb6d097d39b3813801e1"
   name = "github.com/googleapis/gax-go"
-  packages = [
-    ".",
-    "v2",
-  ]
+  packages = ["v2"]
   pruneopts = "UT"
   revision = "c8a15bac9b9fe955bd9f900272f9a306465d28cf"
   version = "v2.0.3"
@@ -266,14 +262,14 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:75016dbecd565b4cd773a543bd809a22ce793f327dbe0f5069db4291c4d88b12"
+  digest = "1:37723aa61884fd031b79d1e427267b795fdd7d14849848ce6516ff9c21b6025b"
   name = "gitlab.com/canya-com/shared/data-structures"
   packages = ["canwork"]
   pruneopts = "UT"
-  revision = "b78488a0c603a6795e1a05112a35871c1a7c76f9"
+  revision = "8ce59c8f630d83e0f578c8901092e9f59ca11fe5"
 
 [[projects]]
-  digest = "1:381ccafa5e013a0e3f9b54604ae522a73b9533a375a6a714b483c634d5e927ab"
+  digest = "1:5baa1a55624558e55a544de8b81542193852b0d607a9e21d9296e82d3e698918"
   name = "go.opencensus.io"
   packages = [
     ".",
@@ -293,22 +289,23 @@
     "trace/tracestate",
   ]
   pruneopts = "UT"
-  revision = "b7bf3cdb64150a8c8c53b769fdeb2ba581bd4d4b"
-  version = "v0.18.0"
+  revision = "2b5032d79456124f42db6b7eb19ac6c155449dc2"
+  version = "v0.19.0"
 
 [[projects]]
-  digest = "1:7b1c378a71f617ec07229a1fcbb90b6a5344295823e1d732398f50fd9ae4bbec"
+  digest = "1:8b4dcdf3822c1407fd4546d05d3883f825834171b4e974ec9df0a897a16e2a56"
   name = "golang.org/x/crypto"
   packages = [
     "pbkdf2",
     "scrypt",
+    "sha3",
   ]
   pruneopts = "UT"
-  revision = "6a293f2d4b14b8e6d3f0539e383f6d0d30fce3fd"
+  revision = "ff983b9c42bc9fbf91556e191cc8efb585c16908"
 
 [[projects]]
   branch = "master"
-  digest = "1:ea15ca041d3a8825790c73df90222f00c7eb2755f5fd5d29cb594df42a4f1f3d"
+  digest = "1:ccd41766aa35ccfa39313e3057ca918ae7f8a33ac17793ef4c342dec75605fce"
   name = "golang.org/x/net"
   packages = [
     "context",
@@ -322,11 +319,11 @@
     "websocket",
   ]
   pruneopts = "UT"
-  revision = "891ebc4b82d6e74f468c533b06f983c7be918a96"
+  revision = "d26f9f9a57f3fab6a695bec0d84433c2c50f8bbf"
 
 [[projects]]
   branch = "master"
-  digest = "1:c58bbfb91df5a7eae08cb9894f9897165f254e459f07666986cd448f9be4ad35"
+  digest = "1:511a6232760c10dcb1ebf1ab83ef0291e2baf801f203ca6314759c5458b73a6a"
   name = "golang.org/x/oauth2"
   packages = [
     ".",
@@ -336,15 +333,15 @@
     "jwt",
   ]
   pruneopts = "UT"
-  revision = "36a7019397c4c86cf59eeab3bc0d188bac444277"
+  revision = "99b60b757ec124ebb7d6b7e97f153b19c10ce163"
 
 [[projects]]
   branch = "master"
-  digest = "1:48a949ee15f5f03524b792547822221b07f828dd26522b5e08688f25a10d14c1"
+  digest = "1:aba2486bbebaadd1f62bde3c363ddbd984efade895833d86ed069f586fd9e899"
   name = "golang.org/x/sys"
   packages = ["unix"]
   pruneopts = "UT"
-  revision = "4d1cda033e0619309c606fc686de3adcf599539e"
+  revision = "aca44879d5644da7c5b8ec6a1115e9b6ea6c40d9"
 
 [[projects]]
   digest = "1:a2ab62866c75542dd18d2b069fec854577a20211d7c0ea6ae746072a1dccdd18"
@@ -425,10 +422,10 @@
     "googleapis/type/latlng",
   ]
   pruneopts = "UT"
-  revision = "db91494dd46c1fdcbbde05e5ff5eb56df8f7d79a"
+  revision = "8ac453e89fca495c0d17f98932642f392e2a11f3"
 
 [[projects]]
-  digest = "1:3fc54ad826c0183f803bb97e0927dfc05fcb7b7a6ddabed646ee8184d861fa9b"
+  digest = "1:2bfad918329beeeeb3433da4745d4283f75c911352af2fc13cf23e294bff18d1"
   name = "google.golang.org/grpc"
   packages = [
     ".",
@@ -465,8 +462,8 @@
     "tap",
   ]
   pruneopts = "UT"
-  revision = "df014850f6dee74ba2fc94874043a9f3f75fbfd8"
-  version = "v1.17.0"
+  revision = "a02b0774206b209466313a0b525d2c738fe407eb"
+  version = "v1.18.0"
 
 [[projects]]
   digest = "1:1b4724d3c8125f6044925f02b485b74bfec9905cbf579d95aafd1a6c8f8447d3"

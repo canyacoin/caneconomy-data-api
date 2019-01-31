@@ -28,6 +28,7 @@ deploy:production:
     - go get github.com/golang/protobuf/proto
     - gcloud auth activate-service-account --key-file /tmp/$CI_PIPELINE_ID.json
     - gcloud config set project $GCP_PROJECT_ID
+    - cp /tmp/$CI_PIPELINE_ID.json ./firebase.json
     - gcloud --quiet app deploy
     - curl --fail https://caneconomy-data-api-$GCP_PROJECT_ID.appspot.com/status
   only:

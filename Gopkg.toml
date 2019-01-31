@@ -26,12 +26,20 @@
 
 
 [[constraint]]
+  name = "cloud.google.com/go"
+  version = "0.35.1"
+
+[[constraint]]
+  name = "firebase.google.com/go"
+  version = "3.6.0"
+
+[[constraint]]
   name = "github.com/dustin/go-humanize"
   version = "1.0.0"
 
 [[constraint]]
   name = "github.com/ethereum/go-ethereum"
-  version = "1.8.20"
+  version = "1.8.21"
 
 [[constraint]]
   name = "github.com/gin-contrib/cors"
@@ -45,10 +53,14 @@
   name = "github.com/op/go-logging"
   version = "1.0.0"
 
-[prune]
-  go-tests = true
-  unused-packages = true
-
 [[constraint]]
   branch = "master"
   name = "gitlab.com/canya-com/shared/data-structures"
+
+[[constraint]]
+  name = "google.golang.org/api"
+  version = "0.1.0"
+
+[prune]
+  go-tests = true
+  unused-packages = true
