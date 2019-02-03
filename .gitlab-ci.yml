@@ -1,4 +1,4 @@
-image: registry.gitlab.com/canya-com/devops/gcloud-golang-111:geth-0.1
+image: registry.gitlab.com/canya-com/gae-golang-build-container:stretch-0.1
 
 stages:
   - deploy
