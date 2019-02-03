@@ -7,7 +7,8 @@ triggers:
     FIREBASE_KEY_PATH: "/home/cam/tooling/keys/canwork/can-work-production.json"
     ETH_NODE_URL: "https://inherently-fast-salmon.quiknode.io/568eb2c7-8118-47e6-a518-7549987fef57/z8XJtqvC36I59F-6Zt5egg==/"
     CANWORK_ESCROW_HASH: "0x6890f982416a44589cb044d2b136d8dce44483df"
-  cmd: go build && ./data-api
+    PORT: "9090"
+  cmd: go build -o caneconomy-data-api && ./caneconomy-data-api
   shell: true
   delay: 100ms
   stop_timeout: 500ms

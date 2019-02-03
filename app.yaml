@@ -1,13 +1,24 @@
-runtime: go111
+runtime: custom
+env: flex
+api_version: go
 
 service: caneconomy-data-api
 
 env_variables:
-  FIREBASE_KEY_PATH: "./firebase.json"
+  GCP_PROJECT_ID: 'canwork-io'
+  FIREBASE_KEY_PATH: 'firebasekey.json'
   ETH_NODE_URL: "https://inherently-fast-salmon.quiknode.io/568eb2c7-8118-47e6-a518-7549987fef57/z8XJtqvC36I59F-6Zt5egg==/"
   CANWORK_ESCROW_HASH: "0x6890f982416a44589cb044d2b136d8dce44483df"
   GIN_MODE: release
 
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 1
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
+
 handlers:
 - url: /.*
-  script: auto
+  script: _go_app
