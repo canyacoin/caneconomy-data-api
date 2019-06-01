@@ -1,9 +1,10 @@
-**Mirror**
+****
 
-This repo is mirrored from the Gitlab master as a backup. Please commit to this:
+> **Mirror**
+> This repo is mirrored from the Gitlab master as a backup. Please commit to this:
+> https://gitlab.com/canyacoin/canapps/caneconomy/data-api
 
-https://gitlab.com/canyacoin/canapps/caneconomy/data-api
----
+****
 
 # data-api
 
